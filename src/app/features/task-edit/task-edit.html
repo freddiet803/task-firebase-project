@@ -1,0 +1,23 @@
+<h1>Edit a Task Below</h1>
+
+<form class="task-form" [formGroup]="ourTaskForm" (ngSubmit)="onSubmit()">
+    <label for="title">Title</label>
+    <input formControlName="title" id="title" type="text" placeholder="What's the Task at hand?..."/>
+
+    <label for="details">Details</label>
+    <textarea formControlName="details" id="details" rows="4" placeholder="Add some details..."></textarea>
+
+    @if(ourTaskForm.controls.title.touched && ourTaskForm.controls.title.invalid){
+        <p class="error">A title of at least 2 characters is required!</p>
+    }
+
+    <label for="color">Notes Color</label>
+    <select formControlName="color" id="color">
+        <option value="yellow">Yellow</option>
+        <option value="pink">Pink</option>
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+    </select>
+
+    <button type="submit" [disabled]="ourTaskForm.invalid">Update Task!</button>
+</form>
