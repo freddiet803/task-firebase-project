@@ -5,8 +5,8 @@
         <article class="sticky" [class.done]="task.done" [attr.data-color]="task.color">
             <h2>{{task.title}}</h2>
             <p>{{task.details}}</p>
-            <a class="edit-link" [routerLink]="['/tasks', task.id,'edit']">Edit</a>
-            <button class="pin-remove" (click)="remove(task.id)">x</button>
+            <a class="edit-glass" [routerLink]="['/tasks', task.id,'edit']">Edit</a>
+            <button class="pin-remove xicon" (click)="remove(task.id)">x</button>
         </article>
 
     }@empty {
