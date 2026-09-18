@@ -2,7 +2,7 @@ import { Component, computed, inject } from '@angular/core';
 import { TasksService } from '../../data/teams/tasks.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Task } from '../../models/task.model';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
   imports: [RouterLink],
@@ -14,6 +14,7 @@ export class TaskBoard {
 
   
     private taskService = inject(TasksService);
+    private router = inject(Router)
     tasks = toSignal(this.taskService.getTasks(), {initialValue: [] as Task[]})
 
     openCount= computed(()=> this.tasks().filter(t=>!t.done).length);
@@ -23,5 +24,11 @@ export class TaskBoard {
       
       if(!confirm('Delete this task?')) return;
       await this.taskService.deleteTask(id);
+    }
+
+    async updateTask(id:string, changes: Partial<Task> ){
+      if(!confirm("Mark as done?")) return;
+      await this.taskService.updateTask(id,changes);
+      this.router.navigate(['/tasks']);
     }
 }

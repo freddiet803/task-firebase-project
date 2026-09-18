@@ -37,6 +37,11 @@
   text-decoration: line-through;
   opacity: 0.55;
 }
+
+.sticky.done p {
+    text-decoration: line-through;
+    opacity: 0.55;
+}
  
 .empty {
   grid-column: 1 / -1;

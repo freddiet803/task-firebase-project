@@ -7,6 +7,8 @@
             <p>{{task.details}}</p>
             <a class="edit-glass" [routerLink]="['/tasks', task.id,'edit']">Edit</a>
             <button class="pin-remove xicon" (click)="remove(task.id)">x</button>
+            <label for="taskdone">Mark task as done</label>
+            <input id="taskdone" type="checkbox" [checked]="task.done" (change)="[updateTask(task.id,{done: !task.done})]" >
         </article>
 
     }@empty {
